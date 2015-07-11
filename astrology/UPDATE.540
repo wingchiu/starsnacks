@@ -1,0 +1,273 @@
+####################  ASTROLOG 5.40 UPDATE FILE  #####################
+
+Happy Winter Solstice everyone! This file describes the freeware
+astrology software program Astrolog version 5.40 and the additions
+and fixes made to it, over the previous version 5.30 which was
+released over two years ago. I have not worked on the program as
+often as before, so apologies for the delay. This update contains
+Hindu or Vedic format wheel charts, and the standard assortment of
+small bug fixes.
+
+This release consists of the following files. If you are reading this
+document as posted in the newsgroup alt.astrology, the first two of
+these files may be found posted as separate articles:
+
+1. "Update.540" - A text file describing new additions to Astrolog
+   5.40 made over the previous version (what you're reading now).
+2. "Readme.540" - A text file describing Astrolog in general and what
+   the program offers and can do, for those interested in a summary.
+3. "ast54win.zip" - A zip archive containing a Windows executable
+   ready to run on any Windows system, a configuration file, four icon
+   files, two URL files, three ephemeris files, a Readme, small summary
+   file, a comprehensive Helpfile manual, and this Update file.
+4. "ast54dos.zip" - A zip archive containing a DOS executable ready
+   to run on PC's, config file, icon files, URL files, three ephemeris
+   files, a Readme, small summary file, Helpfile, and this Update file.
+5. "ast54mac.hqx" - A BinHex 4.0'ed self extracting archive program
+   of the Macintosh executable, config file, three ephemeris files,
+   Readme, summary, Helpfile, a resource file, and this Update file.
+6. "ast54src.zip" - A zip archive containing the source code and
+   makefiles (not necessary unless you want to compile the program
+   yourself).
+7. "History.540" - A text file describing additions in all previous
+   releases (only useful if upgrading from more than one version ago).
+
+The "Helpfile" consists of a large comprehensive documentation file
+of all of Astrolog's features. The "config file" is a default
+settings file called astrolog.dat (not necessary to have to run but
+useful). The "icon files" are Microsoft Windows icons from the
+Windows executable. The "URL files" are small Microsoft Windows text
+files containing Web shortcuts to the Astrolog homepage. The "summary
+file" is a file_id.diz like that included in many zip distributions,
+briefly describing the program in whole. The "Update file" is again
+this document. The "ephemeris files" are three binary files used for
+more accurate calculations of planetary positions (again optional but
+nice to have). The "source code" consists of 28 files (23 "C" program
+files, four header #include files, and a resource script file). The
+"makefiles" are six files: a generic makefile for Unix systems with
+their "make" command, a project makefile for Microsoft Windows
+compilers, a nmakefile for Microsoft DOS compilers, a makefile for
+Borland PC compilers (with a second subfile to go with it), and a
+command script for compiling on VMS systems.
+
+All the files described above are available at the Astrolog 5.40
+homepage at http://www.magitech.com/~cruiser1/astrolog.htm. This Web
+page is mirrored at http://www.astrolog.org/astrolog.htm. (If one
+site is down, the other should work.) All Astrolog files are also at
+the alt.astrology anonymous FTP site at ftp.magitech.com in the
+Astrolog directory /pub/astrology/astrolog. All of the ephemeris
+files are already in the subdirectory /pub/astrology/Astrolog/ephem.
+
+
+#####################  ASTROLOG 5.40 NEW FEATURES  #####################
+
+Here are new additions to version 5.40 that weren't in 5.30 and before:
+
+1. -J switch: Astrolog 5.40 can now display wheel charts in Hindu or
+   Vedic format. This will affect both the text -w wheels and the
+   graphic wheels. A Vedic format wheel is identical to a standard
+   Western wheel except: (1) The signs and houses increase as you go
+   clockwise instead of counterclockwise, so the entire wheel is flipped
+   over. (2) The chart is rotated so the left edge is always the start
+   of Aquarius instead of the Ascendant, putting Pisces in the upper
+   left corner, meaning the Ascendant is placed wherever in the wheel is
+   appropriate. For Vedic astrology one will probably prefer to combine
+   this with the -w house focused wheel chart switch so all the houses
+   are the same size, or even display that chart in text mode so the
+   wheel will be a square.
+
+   'z' key: Pressing the 'z' key while a graphics screen is displayed
+   will toggle whether wheel charts are displayed in the new Vedic
+   format.
+
+2. -9 switch: This command switch will display the chart in the
+   Navamsa format used in Vedic astrology. The Navamsa or marriage chart
+   is formed by applying a formula to each planet position to get a
+   resulting new location. This is similar in operation to the -3 decan
+   feature, however this divides each sign into ninths. Specifically, to
+   convert a position, see which ninth of a sign a planet falls in, e.g.
+   a planet from 0 degrees 0' to 3 degrees 20' of a sign is in the first
+   ninth, a planet from 3 degrees 20' to 6 degrees 40' is in the second
+   ninth, and so on. Take that number, and count one less than that many
+   signs ahead in the zodiac to get the resulting sign. The starting
+   sign should be Aries if the original sign was Fire, Capricorn if the
+   original sign was Earth, Libra if the original sign was Air, and
+   Cancer if the original sign was Water. A formal Navamsa chart only
+   considers signs, hence only the sign of each planet will be changed;
+   the degree within each sign will be unaffected.
+
+   'y' key: Pressing the 'y' key while a graphics screen is displayed
+   will toggle whether charts are displayed in Navamsa format or not.
+
+3. -c extension: The -c house selection switch has been extended to
+   allow a Vedic system of houses, or more specifically the modern India
+   style of equal houses. This is house system number 13, and can be
+   activated on the command line by including "-c 13" (or "-c ved").
+   Note that this moves the index number for the Null house system up
+   one. In this system, each house covers 30 degrees, and the Ascendant
+   is always in the middle of the first house, i.e. the 1st cusp is
+   always 15 degrees before the Ascendant. (For contrast, the ancient or
+   traditional India style of equal houses are already supported in
+   Astrolog by the Whole house system, where the first house cusp is
+   always the start of the sign the Ascendant is in.)
+
+4. Dialog extension: The ayanamsa or zodiac degree offset field in
+   the Calculation Settings dialog in the Windows version has been
+   fitted with a dropdown to allow quick selection of several common
+   systems of sidereal astrology. The values in it are 0.0 for Fagan
+   Bradley, 0.883333 (or 0 degrees 53') for N.C. Lahiri, 0.983333 (or 0
+   degrees 59') for Krishnamurti, and 2.333333 (or 2 degrees 20') for
+   B.V. Raman.
+
+5. -zm switch: This simple switch will set the month and only the month
+   of the current chart in memory to the given value. For example, to
+   display an ephemeris chart for July of this year, do "-n -zm July -E".
+
+6. -zy switch: This is just like the -zm switch above expect it will
+   set the year and only the year of the current chart in memory to the
+   given value. For example, to display a chart for your birthday next
+   year, do "-i yourchart -zy 1999".
+
+7. Improved glyphs: Astrolog now has higher resolution graphic glyphs
+   for sign symbols and house numbers. Before, some glyphs drawn at the
+   default 200% or medium scale and up would look slightly blocky. Now,
+   with a alternate "internal font" of double sized glyphs, the medium
+   ones are smooth to the nearest pixel like the small glyphs are. The
+   glyph for the Quintile aspect has also been improved. The better
+   glyphs are also used at the 400% or huge scale, and when printing.
+
+8. Windows addition: The Documentation submenu of the Help menu in
+   the Windows version has a new "Open Homepage" command to
+   automatically visit the Astrolog homepage. This command will start
+   Internet Explorer or whatever Web browser your system has set to
+   interpret .URL extension files, and will have that browser open the
+   file astrolog.url in your astrolog directory.
+
+--
+
+Here's a summary of the four new command switches in Astrolog 5.40
+that weren't in previous versions:
+
+-zm <month>: Set only the month of current chart.
+-zy <year>: Set only the year of current chart.
+-J: Display wheel charts in Vedic format.
+-9: Display objects in their zodiac navamsa positions.
+
+Here's a summary of the four new menu commands in the Windows
+version of Astrolog 5.40 that weren't in previous versions:
+
+Setting - House System - Vedic
+Setting - House Settings - Vedic Wheel Display
+Setting - House Settings - Show Navamsas
+Help - Documentation - Open Homepage
+
+
+#####################  ASTROLOG 5.40 BUG FIXES  #####################
+
+Here are problems with version 5.30, all of which have been corrected
+in this release:
+
+1. -EY bug: The multiple year ephemeris switch wouldn't update the
+   "next switch indicator" past the number of years parameter, so the
+   number of years to do the ephemeris for would also get treated as a
+   command switch, resulting in either unexpected looking charts or an
+   unexpected "unknown switch" error.
+
+2. Computation fix: Charts cast at extreme latitudes (inside the
+   Arctic or Antarctic circles) could cause bogus looking charts with
+   overlapping houses. This would happen when the natural formulas for
+   the MC and Asc at those locations would put the Asc in the 180
+   degrees before instead of after the MC. Astrolog now preserves the
+   Midheaven, and flips the Ascendant if need be to ensure the other
+   house cusps will remain sane.
+
+3. Edit - Copy Chart Text bug: In the Windows version, copying text
+   table list charts to the clipboard would only actually copy about the
+   first 90% of the text, clipping off the rest.
+
+4. -YJ bug: The -YJ switch which allows changing what signs each
+   planet rules, wouldn't also update a reverse table which given a sign
+   indicates which planet rules it. This would cause -YJ to have
+   seemingly no effect on the sign list table, the influence chart, the
+   Arabic parts chart, and the dispositor graph.
+
+5. -r0 limitation: The -r0 switch will now accept the virtual file
+   "nul" as its first parameter, so command sequences like "-q -r0 nul
+   now" will work and use the chart data from -q in the relationship
+   chart. Before the first chart slot would get overwritten by the data
+   for the second chart while internally processing the second chart.
+
+6. Display glitch: The degree hatch marks on Windows graphic wheels
+   wouldn't line up exactly on the lower right with the circles they go
+   between.
+
+7. File - Save Settings limitation: The astrolog.dat defaults file as
+   generated by the Windows version would only save out aspect orbs and
+   planet orb additions to the nearest degree, losing any fractional
+   part. These values are now to the nearest tenth of a degree like they
+   are in the Aspect Settings dialog.
+
+
+#####################  ASTROLOG 5.40 PROGRAM CHANGES  #####################
+
+As with every release, a few changes that aren't feature additions or
+bug fixes were made to this version, where certain old assumptions
+are no longer valid. A list of these (which aren't useful to be aware
+of unless you have used previous versions of the program) follows:
+
+1. -YP change: The -YP switch affecting whether Arabic parts have
+   their formulas inverted for night time charts, now also affects the
+   special Part of Fortune object in the main object list. Before, you
+   could only either never invert the Part of Fortune (the default) or
+   else always invert the Part of Fortune (even for day charts). The
+   special Part of Fortune object is now affected by "-YP 0" which means
+   the standard process of inverting just for night charts. As this is
+   the default setting, this means Astrolog 5.40 will compute the Part
+   of Fortune in the standard displays differently than previous
+   versions, for night charts.
+
+2. Defaults dialog addition: The -Yz correction factor for "now"
+   charts switch has been added to the Default Chart Info dialog. This
+   is to make that feature more discoverable, as people asking why their
+   "now" charts are whatever number of hours off is the single most
+   common subject of Astrolog related e-mail I receive.
+
+3. astrolog.dat change: The -Yz correction factor for "now" charts
+   has had its position in the default astrolog.dat settings file moved
+   closer to the top, again to make it more discoverable. It's now right
+   next to the line that turns on doing -n "now" charts themself.
+
+4. Calculation improvement: Astrolog will no longer just display a
+   error and terminate the program if one tries to cast a chart inside
+   the Arctic or Antarctic circles using Placidus or Koch houses. (Those
+   systems of houses are not defined near the poles.) In such a case the
+   program will now change the latitude of the chart being computed to
+   the closest legal latitude allowed (i.e. move it from the pole to the
+   edge of the Arctic or Antarctic circle) during the computation of the
+   chart.
+
+5. -r0 -g -X improvement: The graphic relationship aspect grid has
+   been improved so the outlines of the cells on the main diagonal are
+   highlighted in a slightly brighter color.
+
+6. -M -X tweak: The sidebar in the graphic Gauquelin sector wheel
+   chart has been changed so that to the right of each planet position
+   is the sector number the planet falls in. Before this was just the
+   glyph for the object in question like it is for the other wheels.
+
+7. Previous chart change: The initial contents of the "previous" chart
+   as accessed with "-i set" has been changed from the astrological
+   "chart" of version 5.30 of the program to the release of this version
+   5.40. This chart is now set to the time of the Winter Solstice,
+   specifically for 5:57pm PST (8 hours before GMT) on Monday, December
+   21, 1998 for here in Seattle, WA (122W20, 47N36).
+
+--
+
+O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O
+*       Walter D. "Cruiser1" Pullen :)       !       Astara@msn.com       *
+O Astrolog 5.40 homepage:  http://www.magitech.com/~cruiser1/astrolog.htm O
+* "Who am I, What am I?  As I am, I am not.  But as we are, I AM.  And to *
+O you my creation, My Perfect Love is your Perfect Freedom. And I will be O
+* with you forever and ever, until the End, and then forever more." - GOD *
+O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O
